@@ -18,6 +18,8 @@ public class Final extends AppCompatActivity implements View.OnClickListener{
     TextView alerta;
     int ConX;
     int ConO;
+    String textoX;
+    String textoO;
 
 
     @Override
@@ -37,16 +39,16 @@ public class Final extends AppCompatActivity implements View.OnClickListener{
            ConX=bundle.getInt("sumX");
            ConO=bundle.getInt("sumO");
         }
-        String textoX= String.valueOf(ConX);
-        String textoO= String.valueOf(ConO);
+         textoX= String.valueOf(ConX);
+         textoO= String.valueOf(ConO);
         equis.setText(textoX);
         cero.setText(textoO);
         ganador.setText(mensaje);
-        if(mensaje==":("){
+        if(mensaje.equals(":(")){
             alerta.setText("¡EMPATE!");
         }
         else{
-            alerta.setText("¡GANADOR!");
+            alerta.setText("¡GANADORR!");
         }
     }
 
@@ -55,9 +57,20 @@ public class Final extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View view){
 
-
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            mensaje = bundle.getString("clave");
+            ConX=bundle.getInt("sumX");
+            ConO=bundle.getInt("sumO");
+        }
 
         Intent i=new Intent(this, MainActivity.class);
+
+        Bundle regreso = new Bundle();
+        regreso.putInt("sumX", ConX);
+        regreso.putInt("sumO", ConO);
+        i.putExtras(regreso);
+
 
         startActivity(i);
     }

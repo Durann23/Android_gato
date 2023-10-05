@@ -32,9 +32,14 @@ public class MainActivity extends AppCompatActivity {
     private String textoBtn22;
     int sumX;
     int sumO;
+    int ConX;
+    int ConO;
 
     String ganador;
     private Double checo;
+
+    String textoX;
+    String textoO;
 
 
     @Override
@@ -67,7 +72,14 @@ public class MainActivity extends AppCompatActivity {
          textoBtn22 = btn22.getText().toString();
 
 
+        Bundle  regreso = getIntent().getExtras();
+        if (regreso != null) {
+            sumX=regreso.getInt("sumX");
+            sumO=regreso.getInt("sumO");
+        }
 
+        gane.setText("X:"+sumX);
+        cero.setText("O:"+sumO);
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -91,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
             return;
 
         }
+
+
+
+
         textoDelBoton = button.getText().toString();
         if (jugador1Turn) {
             button.setText("X");
@@ -114,9 +130,9 @@ public class MainActivity extends AppCompatActivity {
                 ganador="X";
                 Bundle bundle = new Bundle();
                 bundle.putString("clave", ganador);
+                bundle.putInt("sumO", sumO);
                 bundle.putInt("sumX", sumX);
                 i.putExtras(bundle);
-                gane.setText("X:"+sumX);
                 startActivity(i);
             } else if(checo==2.0) {
                 sumO++;
@@ -128,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 ganador="O";
                 Bundle bundle = new Bundle();
                 bundle.putString("clave", ganador);
+                bundle.putInt("sumX", sumX);
                 bundle.putInt("sumO", sumO);
                 i.putExtras(bundle);
                 cero.setText("O:"+sumO);
@@ -143,10 +160,11 @@ public class MainActivity extends AppCompatActivity {
                  ganador=":(";
                 Bundle bundle = new Bundle();
                 bundle.putString("clave", ganador);
+                bundle.putInt("sumX", sumX);
+                bundle.putInt("sumO", sumO);
                 i.putExtras(bundle);
                 rondasJugadas=0;
                 startActivity(i);
-                gane.setText("Gano el cine");
             }
     }
 
@@ -190,10 +208,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Verificar victoria en diagonales
-        //if (("X".equals(textoBtn00) &&"X".equals(textoBtn11) &&"X".equals(textoBtn22)) ||
-        //      ("O".equals(textoBtn00) &&"0".equals(textoBtn11) &&"0".equals(textoBtn22))){
-          //  return true;
-        //}
+        if (("X".equals(textoBtn00) &&"X".equals(textoBtn11) &&"X".equals(textoBtn22)) ||
+                ("O".equals(textoBtn00) && "O".equals(textoBtn11) && "O".equals(textoBtn22))){
+
+            if("X".equals(textoBtn22)){
+                si=1.0;
+                return si;
+            }
+            else{
+                si=2.0;
+                return si;
+            }
+        }else{
+            si=0.0;
+        }
 
         //return false; // No se ha alcanzado una victoria
         return si;
