@@ -1,0 +1,12 @@
+09:24 a. m. 25/09/2023
+
+Los listener pueden llamar varios metodos, sale?
+
+View.OnClickListener listener=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num00.setText(00);
+            }
+        };
+        num00.setOnClickListener(listener);
+

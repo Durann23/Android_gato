@@ -1,0 +1,148 @@
+package com.example.practica2eventos;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Button;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    private TextView inputTextView;
+    private double firstNumber = 0;
+    private String operator = "";
+    private boolean isOperatorClicked = false;
+
+
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); // Debes establecer el contenido primero
+        inputTextView = findViewById(R.id.inputTextView);
+
+        setContentView(R.layout.activity_main);
+
+        Button num00 = findViewById(R.id.num00);
+        Button num0 = findViewById(R.id.num0);
+        Button num1 = findViewById(R.id.num1);
+        Button num2 = findViewById(R.id.num2);
+        Button num3 = findViewById(R.id.num3);
+        Button num4 = findViewById(R.id.num4);
+        Button num5 = findViewById(R.id.num5);
+        Button num6 = findViewById(R.id.num6);
+        Button num7 = findViewById(R.id.num7);
+        Button num8 = findViewById(R.id.num8);
+        Button num9 = findViewById(R.id.num9);
+
+        num00.setOnClickListener(this);
+        num0.setOnClickListener(this);
+        num1.setOnClickListener(this);
+        num2.setOnClickListener(this);
+        num3.setOnClickListener(this);
+        num4.setOnClickListener(this);
+        num5.setOnClickListener(this);
+        num6.setOnClickListener(this);
+        num7.setOnClickListener(this);
+        num8.setOnClickListener(this);
+        num9.setOnClickListener(this);
+
+        Button punto = findViewById(R.id.punto);
+        Button del = findViewById(R.id.del);
+        Button porce = findViewById(R.id.porce);
+        Button borrar = findViewById(R.id.borrar);
+        Button div = findViewById(R.id.div);
+        Button mult = findViewById(R.id.mult);
+        Button menos = findViewById(R.id.menos);
+        Button mas = findViewById(R.id.mas);
+        Button igual = findViewById(R.id.igual);
+
+        punto.setOnClickListener(this);
+        porce.setOnClickListener(this);
+        del.setOnClickListener(this);
+        borrar.setOnClickListener(this);
+        div.setOnClickListener(this);
+        mult.setOnClickListener(this);
+        menos.setOnClickListener(this);
+        mas.setOnClickListener(this);
+        igual.setOnClickListener(this);
+
+    }
+    @Override
+    public void onClick(View view) {
+        String currentText = inputTextView.getText().toString();
+        int id = view.getId();
+
+        if (id == R.id.num00) {
+            currentText += "00";
+        } else if (id == R.id.num0) {
+            currentText += "0";
+        } else if (id == R.id.num1) {
+            currentText += "1";
+        } else if (id == R.id.num2) {
+            currentText += "2";
+        } else if (id == R.id.num3) {
+            currentText += "3";
+        } else if (id == R.id.num4) {
+            currentText += "4";
+        } else if (id == R.id.num5) {
+            currentText += "5";
+        } else if (id == R.id.num6) {
+            currentText += "6";
+        } else if (id == R.id.num7) {
+            currentText += "7";
+        } else if (id == R.id.num8) {
+            currentText += "8";
+        } else if (id == R.id.num9) {
+            currentText += "9";
+        } else if (id == R.id.mas) {
+            // Maneja el clic del botón de suma
+            if (!currentText.isEmpty()) {
+                firstNumber = Double.parseDouble(currentText);
+                operator = "+";
+                isOperatorClicked = true;
+            }
+
+        } else if (id == R.id.igual) {
+
+            if (isOperatorClicked && !currentText.isEmpty()) {
+                double secondNumber = Double.parseDouble(currentText);
+                double result = 0;
+
+                // Realiza la operación correspondiente según el operador
+                switch (operator) {
+                    case "+":
+                        result = firstNumber + secondNumber;
+                        break;
+                    case "-":
+                        result = firstNumber - secondNumber;
+                        break;
+                    case "*":
+                        result = firstNumber * secondNumber;
+                        break;
+                    case "/":
+                        if (secondNumber != 0) {
+                            result = firstNumber / secondNumber;
+                        } else {
+                            // Manejo de error: División por cero
+                        }
+                        break;
+                    // Agrega más casos para otros operadores
+                }
+
+                // Muestra el resultado en el campo de entrada
+                inputTextView.setText(String.valueOf(result));
+                isOperatorClicked = true; // Establece la bandera para futuras operaciones
+            }
+
+
+        }
+
+    }
+        };
+
+

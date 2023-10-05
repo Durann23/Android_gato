@@ -1,0 +1,32 @@
+10:11 p. m. 27/09/2023
+
+
+npm init adonis-ts-app@latest tercero
+//npm install -g @adonisjs/cli
+npm i @adonisjs/lucid
+
+
+node ace make:migration create_peliculas
+node ace migration:run
+
+# CREATE: database/migrations/1630981615472_users.ts
+
+
+node ace serve --watch
+
+npm install @adonisjs/lucid-soft-deletes
+
+
+
+      table.timestamp('deleted_at', { useTz: true }).nullable()
+
+table
+            .timestamp('created_at')
+            .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+          table
+            .timestamp('updated_at')
+            .defaultTo(this.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+
+node ace make:model Personas
+
+node ace make:controller Profesores

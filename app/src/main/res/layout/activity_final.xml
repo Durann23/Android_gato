@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple"
+    tools:context=".Final">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lilac"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="40dp"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:padding="9sp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="70sp">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_marginEnd="5sp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:paddingStart="20sp"
+                    android:layout_width="140px"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="X"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:id="@+id/conX"
+                    android:layout_marginStart="50dp"
+                    android:paddingEnd="20sp"
+                    android:layout_width="40sp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="O"
+                    android:textSize="25sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:paddingStart="20sp"
+                    android:layout_width="140px"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="O"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:id="@+id/conO"
+                    android:layout_marginStart="50dp"
+                    android:paddingEnd="20sp"
+                    android:layout_width="40sp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="O"
+                    android:textSize="25sp"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Juego finalizado"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/gandor"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textSize="200sp"
+            android:gravity="center"
+            android:padding="0dp"
+
+            />
+        <TextView
+            android:id="@+id/mensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="¡GANADOR!"
+            android:textColor="@color/black"
+            android:textSize="50sp"
+            android:gravity="center"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/last"
+            android:layout_margin="80dp">
+
+            <Button
+                android:id="@+id/again"
+                android:text="Jugar de nuevo"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/none"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
